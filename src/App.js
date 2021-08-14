@@ -5,7 +5,8 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import AuthService from "./service/auth.service";
 
 import Login from "./component/login.component";
-import Profile from "./component/rewards.component";
+import Rewards from "./component/rewards.component";
+import Welcome from "./component/welcome.component";
 
 class App extends Component {
   constructor(props) {
@@ -24,6 +25,7 @@ class App extends Component {
         currentUser: user,
       });
     }
+    this.forceUpdate();
   }
 
   logout() {
@@ -42,12 +44,17 @@ class App extends Component {
                   Click to Logout
                 </a>
               </li>
+              <li className="nav-item">
+                <a href="/rewards" className="nav-link">
+                  Rewards
+                </a>
+              </li>
             </div>
           ) : (
             <div className="navbar-nav ml-auto">
               <li className="nav-item">
                 <Link to={"/login"} className="nav-link">
-                  Login to see Rewards
+                  Login
                 </Link>
               </li>
             </div>
@@ -57,7 +64,8 @@ class App extends Component {
         <div className="container mt-3">
           <Switch>
             <Route exact path={["/", "/login"]} component={Login} />
-            <Route exact path="/rewards" component={Profile} />
+            <Route exact path="/rewards" component={Rewards} />
+            <Route exact path="/welcome" component={Welcome} />
           </Switch>
         </div>
       </div>
